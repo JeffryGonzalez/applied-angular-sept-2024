@@ -1,13 +1,12 @@
 {
   "type": "excalidraw",
   "version": 2,
-  "source": "https://app.excalidraw.com",
+  "source": "https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor",
   "elements": [
     {
       "type": "text",
-      "version": 809,
-      "versionNonce": 71950774,
-      "index": "a2",
+      "version": 810,
+      "versionNonce": 226863700,
       "isDeleted": false,
       "id": "_6ycyiBUhMe8uU2ZUmMAc",
       "fillStyle": "solid",
@@ -20,14 +19,14 @@
       "y": 842,
       "strokeColor": "#1971c2",
       "backgroundColor": "transparent",
-      "width": 1327.8125,
+      "width": 1160.15625,
       "height": 820.8,
       "seed": 1225091254,
       "groupIds": [],
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1727699028925,
+      "updated": 1727715698280,
       "link": null,
       "locked": false,
       "fontSize": 36,
@@ -37,14 +36,13 @@
       "verticalAlign": "top",
       "containerId": null,
       "originalText": "Tasks\n    - Figuring out the Business Side\n        - How do I convert this into code?\n        - How do I verify my understanding?\n        - How do I get/give feedback?\n    - Figuring out the Tech Side\n        - How to do this in a browser\n        - How to do this in Angular\n        - How to do the Server Side\n        - How to ... (auth, geolocation, etc. etc.)\n     - Figuring out the UI/UX Side\n        - How do I make this not suck?\n        - How do I guide them to do the task correctly?\n    - Making it \"Good\"\n        - Performance\n        - Reliability / Resiliency\n        - \"Clean\", reusable, creating abstractions\n        - Consistent with rest of application\n        - Testable",
-      "autoResize": true,
-      "lineHeight": 1.2
+      "lineHeight": 1.2,
+      "baseline": 812
     },
     {
       "type": "text",
-      "version": 45,
-      "versionNonce": 1175819062,
-      "index": "a3",
+      "version": 46,
+      "versionNonce": 918541548,
       "isDeleted": false,
       "id": "TLliTwCHbFTjxOEmR56SU",
       "fillStyle": "solid",
@@ -64,7 +62,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1727698791060,
+      "updated": 1727715698281,
       "link": null,
       "locked": false,
       "fontSize": 36,
@@ -74,14 +72,13 @@
       "verticalAlign": "top",
       "containerId": null,
       "originalText": "Without this, none of the \nrest matters.",
-      "autoResize": true,
-      "lineHeight": 1.2
+      "lineHeight": 1.2,
+      "baseline": 78
     },
     {
       "type": "arrow",
       "version": 113,
       "versionNonce": 312035638,
-      "index": "a4",
       "isDeleted": false,
       "id": "-4LVrt2IOCqaDFUeXM-cl",
       "fillStyle": "solid",
@@ -120,14 +117,12 @@
           -679,
           11
         ]
-      ],
-      "elbowed": false
+      ]
     },
     {
       "type": "text",
-      "version": 215,
-      "versionNonce": 398243830,
-      "index": "a5",
+      "version": 216,
+      "versionNonce": 1971666900,
       "isDeleted": false,
       "id": "VnYN4-fX6wph2h1Kb4j5y",
       "fillStyle": "solid",
@@ -147,7 +142,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1727699554343,
+      "updated": 1727715698282,
       "link": null,
       "locked": false,
       "fontSize": 36,
@@ -157,14 +152,13 @@
       "verticalAlign": "top",
       "containerId": null,
       "originalText": "Without this, you can't ship.",
-      "autoResize": true,
-      "lineHeight": 1.2
+      "lineHeight": 1.2,
+      "baseline": 35
     },
     {
       "type": "arrow",
       "version": 412,
       "versionNonce": 279650730,
-      "index": "a6",
       "isDeleted": false,
       "id": "JgXjXlgH6GyxDM6Z8yEAQ",
       "fillStyle": "solid",
@@ -208,14 +202,12 @@
           -689,
           13.14199012160202
         ]
-      ],
-      "elbowed": false
+      ]
     },
     {
       "type": "arrow",
       "version": 352,
       "versionNonce": 1834170858,
-      "index": "a8",
       "isDeleted": false,
       "id": "xt71AD9WO8TWxMVC3NJDC",
       "fillStyle": "solid",
@@ -254,14 +246,12 @@
           -713,
           10
         ]
-      ],
-      "elbowed": false
+      ]
     },
     {
       "type": "text",
-      "version": 496,
-      "versionNonce": 1912347754,
-      "index": "a9",
+      "version": 497,
+      "versionNonce": 5134188,
       "isDeleted": false,
       "id": "_6m93AJTDl5DnbOtdo7Wa",
       "fillStyle": "solid",
@@ -286,7 +276,7 @@
           "type": "arrow"
         }
       ],
-      "updated": 1727699024823,
+      "updated": 1727715698282,
       "link": null,
       "locked": false,
       "fontSize": 36,
@@ -296,14 +286,13 @@
       "verticalAlign": "top",
       "containerId": null,
       "originalText": "Without this, it'll hit a brick wall,\nbut WITH this, you won't be as \nable to easily iterate on the above.\n",
-      "autoResize": true,
-      "lineHeight": 1.2
+      "lineHeight": 1.2,
+      "baseline": 165
     },
     {
       "type": "arrow",
       "version": 572,
       "versionNonce": 795637546,
-      "index": "aA",
       "isDeleted": false,
       "id": "zsGg2r6zEbTX8G9ilLXjp",
       "fillStyle": "solid",
@@ -342,14 +331,12 @@
           -925,
           -28.85800987839798
         ]
-      ],
-      "elbowed": false
+      ]
     },
     {
       "type": "text",
-      "version": 348,
-      "versionNonce": 283525878,
-      "index": "aB",
+      "version": 349,
+      "versionNonce": 871769428,
       "isDeleted": false,
       "id": "7PWNe_CLqRBZXez8VJ3En",
       "fillStyle": "solid",
@@ -374,7 +361,7 @@
           "type": "arrow"
         }
       ],
-      "updated": 1727699001042,
+      "updated": 1727715698283,
       "link": null,
       "locked": false,
       "fontSize": 36,
@@ -384,14 +371,12 @@
       "verticalAlign": "top",
       "containerId": null,
       "originalText": "Without this, nobody will use it.\n",
-      "autoResize": true,
-      "lineHeight": 1.2
+      "lineHeight": 1.2,
+      "baseline": 78
     }
   ],
   "appState": {
     "gridSize": 20,
-    "gridStep": 5,
-    "gridModeEnabled": false,
     "viewBackgroundColor": "#ffffff"
   },
   "files": {}
