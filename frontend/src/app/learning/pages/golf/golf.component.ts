@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { computeMsgId } from '@angular/compiler';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  signal,
+} from '@angular/core';
 type GolfHole = {
   holeNumber: number;
   score: number;
@@ -25,6 +31,11 @@ type GolfHole = {
         </p>
         }
       </ul>
+      @if(currentHole() === 1) {
+      <p>Have a great game!</p>
+      } @else {
+      <p>You have a total score of {{ totalScore() }}</p>
+      }
     </div>
   `,
   styles: ``,
@@ -40,15 +51,22 @@ export class GolfComponent {
     this.currentScore.update((s) => s - 1);
   }
 
+  totalScore = computed(() => {
+    const finalScore = this.holes() // this holes signal is still referring to the same value.
+      .map((s) => s.score) // score
+      .reduce((a, b) => a + b, 0);
+    return finalScore;
+  });
   sunk() {
     const record: GolfHole = {
       holeNumber: this.currentHole(),
       score: this.currentScore(),
     };
-    this.holes.update((h) => {
-      h.push(record);
-      return h;
-    });
+    // this.holes.update((h) => {
+    //   h.push(record);
+    //   return [...h];
+    // });
+    this.holes.set([record, ...this.holes()]); // reassigning this to a new list
     this.currentHole.update((h) => (h += 1));
     this.currentScore.set(0);
   }
