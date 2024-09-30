@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NavbarCenterMenuComponents } from "./components/navbar-center-menu.components";
 import { NavbarEndComponent } from "./components/navbar-end.component";
 import { NavbarItemsComponent } from "./components/navbar-side-menu.component";
+import { LinkItem } from './types';
 
 @Component({
   selector: 'app-nav-bar',
@@ -36,7 +37,7 @@ import { NavbarItemsComponent } from "./components/navbar-side-menu.component";
       </div>
       <div class="navbar-center hidden lg:flex">
       
-         <app-nav-bar-center-items />
+         <app-nav-bar-center-items [links]="links"  />
         
       </div>
       <div class="navbar-end">
@@ -46,4 +47,18 @@ import { NavbarItemsComponent } from "./components/navbar-side-menu.component";
   `,
   styles: ``,
 })
-export class NavbarComponent {}
+export class NavbarComponent {
+
+  // "parent component"
+  // own the list of links that should be shown in all child components.
+  links:LinkItem[] = [
+    {
+      path: '/learning',
+      text: 'Stuff From Class'
+    },
+    {
+      path: '/halloween',
+      text: 'Halloween Tracker'
+    }
+  ]
+}
