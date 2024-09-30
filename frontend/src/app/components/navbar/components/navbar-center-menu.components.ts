@@ -1,17 +1,17 @@
-import { Component, ChangeDetectionStrategy, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { LinkItem } from '../types';
-import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-nav-bar-center-items',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
+  imports: [RouterLink],
   template: `
     <ul class="menu menu-horizontal px-1">
 
     @for(link of links(); track $index) {
-      <li><a>{{link.text}}</a></li>
+      <li><a [routerLink]="link.path">{{link.text}}</a></li>
     }
     
     </ul>

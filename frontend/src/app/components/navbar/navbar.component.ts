@@ -3,12 +3,13 @@ import { NavbarCenterMenuComponents } from "./components/navbar-center-menu.comp
 import { NavbarEndComponent } from "./components/navbar-end.component";
 import { NavbarItemsComponent } from "./components/navbar-side-menu.component";
 import { LinkItem } from './types';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NavbarEndComponent, NavbarItemsComponent, NavbarCenterMenuComponents],
+  imports: [NavbarEndComponent, NavbarItemsComponent, NavbarCenterMenuComponents, RouterLink],
   template: `
     <div class="navbar bg-base-100">
       <div class="navbar-start">
@@ -33,7 +34,7 @@ import { LinkItem } from './types';
 <app-nav-bar-side-menu-items [links]="links" />
         
         </div>
-        <a class="btn btn-ghost text-xl">Applied Angular</a>
+        <a  routerLink="/" class="btn btn-ghost text-xl">Applied Angular</a>
       </div>
       <div class="navbar-center hidden lg:flex">
       
