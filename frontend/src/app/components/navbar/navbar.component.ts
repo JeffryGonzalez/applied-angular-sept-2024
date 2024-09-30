@@ -30,7 +30,7 @@ import { LinkItem } from './types';
             </svg>
           </div>
          
-<app-nav-bar-side-menu-items />
+<app-nav-bar-side-menu-items [links]="links" />
         
         </div>
         <a class="btn btn-ghost text-xl">Applied Angular</a>
