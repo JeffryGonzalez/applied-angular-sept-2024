@@ -1,10 +1,17 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { NavbarCenterMenuComponents } from './components/navbar-center-menu.components';
 import { NavbarEndComponent } from './components/navbar-end.component';
 import { NavbarItemsComponent } from './components/navbar-side-menu.component';
 import { LinkItem } from './types';
 import { RouterLink } from '@angular/router';
 import { GolfStore } from '@shared/golf.store'; // touching somebody else's code. This should be in @shared
+import { UserStore } from '@shared/user.store';
 
 @Component({
   selector: 'app-nav-bar',
@@ -37,12 +44,12 @@ import { GolfStore } from '@shared/golf.store'; // touching somebody else's code
             </svg>
           </div>
 
-          <app-nav-bar-side-menu-items [links]="links" />
+          <app-nav-bar-side-menu-items [links]="links()" />
         </div>
         <a routerLink="/" class="btn btn-ghost text-xl">Applied Angular </a>
       </div>
       <div class="navbar-center hidden lg:flex">
-        <app-nav-bar-center-items [links]="links" />
+        <app-nav-bar-center-items [links]="links()" />
       </div>
       <div class="navbar-end">
         <app-nav-bar-end />
@@ -55,7 +62,7 @@ export class NavbarComponent {
   //  golfStore = inject(GolfStore);
   // "parent component"
   // own the list of links that should be shown in all child components.
-  links: LinkItem[] = [
+  #links: LinkItem[] = [
     {
       path: '/learning',
       text: 'Stuff From Class',
@@ -65,4 +72,12 @@ export class NavbarComponent {
       text: 'Halloween Tracker',
     },
   ];
+  userStore = inject(UserStore);
+  links = computed(() => {
+    if (this.userStore.userLoggedIn()) {
+      return this.#links;
+    } else {
+      return [];
+    }
+  });
 }
