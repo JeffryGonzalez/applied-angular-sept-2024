@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { GolfComponent } from './pages/golf/golf.component';
 import { GolfService } from './pages/golf/golf.service';
+import { GolfStore } from './pages/golf/golf.store';
 
 @Component({
   standalone: true,
@@ -24,5 +25,5 @@ import { GolfService } from './pages/golf/golf.service';
   styles: ``,
 })
 export class LearningComponent {
-  golfService = inject(GolfService);
+  golfService = inject(GolfStore);
 }

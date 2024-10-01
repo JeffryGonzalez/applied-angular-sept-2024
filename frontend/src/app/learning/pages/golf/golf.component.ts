@@ -4,6 +4,7 @@ import {
   IncrementButtonDirective,
 } from '@shared/increment-button.directive';
 import { GolfService } from './golf.service';
+import { GolfStore } from './golf.store';
 
 @Component({
   selector: 'app-golf-game',
@@ -39,7 +40,7 @@ import { GolfService } from './golf.service';
   styles: ``,
 })
 export class GolfComponent {
-  service = inject(GolfService);
+  service = inject(GolfStore);
 
   reset() {
     //this.service.currentScore.set(0);
