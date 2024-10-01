@@ -1,7 +1,9 @@
 import {
   patchState,
   signalStore,
+  watchState,
   withComputed,
+  withHooks,
   withMethods,
   withState,
 } from '@ngrx/signals';
@@ -52,5 +54,17 @@ export const GolfStore = signalStore(
         });
       },
     };
+  }),
+  withHooks({
+    onInit(store) {
+      const savedState = localStorage.getItem('golf-game');
+      if (savedState !== null) {
+        const savedGame = JSON.parse(savedState) as unknown as GolfGameState;
+        patchState(store, savedGame);
+      }
+      watchState(store, (state) => {
+        localStorage.setItem('golf-game', JSON.stringify(state));
+      });
+    },
   })
 );

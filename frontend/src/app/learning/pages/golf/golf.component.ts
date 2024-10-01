@@ -41,8 +41,4 @@ import { GolfStore } from './golf.store';
 })
 export class GolfComponent {
   service = inject(GolfStore);
-
-  reset() {
-    //this.service.currentScore.set(0);
-  }
 }
