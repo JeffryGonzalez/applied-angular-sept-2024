@@ -13,7 +13,7 @@ import { LinkItem } from '../types';
       <li>
         <a
           [routerLink]="link.path"
-          [routerLinkActive]="['underline', 'underline-offset-2', ' font-bold']"
+          [routerLinkActive]="['underline', 'underline-offset-2', 'font-bold']"
           >{{ link.text }}</a
         >
       </li>
