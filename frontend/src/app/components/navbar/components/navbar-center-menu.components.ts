@@ -14,6 +14,7 @@ import { LinkItem } from '../types';
         <a
           [routerLink]="link.path"
           [routerLinkActive]="['underline', 'underline-offset-2', 'font-bold']"
+          [routerLinkActiveOptions]="{ exact: true }"
           >{{ link.text }}</a
         >
       </li>

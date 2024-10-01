@@ -39,9 +39,7 @@ import { GolfStore } from '@shared/golf.store'; // touching somebody else's code
 
           <app-nav-bar-side-menu-items [links]="links" />
         </div>
-        <a routerLink="/" class="btn btn-ghost text-xl"
-          >Applied Angular ({{ golfStore.totalScore() }})</a
-        >
+        <a routerLink="/" class="btn btn-ghost text-xl">Applied Angular </a>
       </div>
       <div class="navbar-center hidden lg:flex">
         <app-nav-bar-center-items [links]="links" />
@@ -54,7 +52,7 @@ import { GolfStore } from '@shared/golf.store'; // touching somebody else's code
   styles: ``,
 })
 export class NavbarComponent {
-  golfStore = inject(GolfStore);
+  //  golfStore = inject(GolfStore);
   // "parent component"
   // own the list of links that should be shown in all child components.
   links: LinkItem[] = [

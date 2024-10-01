@@ -22,7 +22,6 @@ const initialState: GolfGameState = {
   holes: [],
 };
 export const GolfStore = signalStore(
-  { providedIn: 'root' },
   withState(initialState),
   withComputed((state) => {
     return {
