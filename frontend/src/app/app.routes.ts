@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { LEARNING_ROUTES } from './learning/routes';
-import { HomeComponent } from './pages/home.component';
-import { DashboardComponent } from './pages/dashboard.component';
 import { GolfStore } from '@shared/golf.store';
+import { LEARNING_ROUTES } from './learning/routes';
+import { DashboardComponent } from './pages/dashboard.component';
+import { HomeComponent } from './pages/home.component';
 
 export const routes: Routes = [
   // ok, all the routes for the app...
@@ -17,6 +17,13 @@ export const routes: Routes = [
       //   component: DashboardComponent,
       // },
       ...LEARNING_ROUTES,
+      {
+        path: 'halloween',
+        loadChildren: () =>
+          import('./halloween/halloween.routes').then(
+            (r) => r.HALLOWEEN_ROUTES
+          ),
+      },
       {
         // a catchall has to be last.
         path: '**',

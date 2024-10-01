@@ -1,1 +1,2 @@
-export const handlers = [];
+import userHandler from './user.handler';
+export const handlers = [...userHandler];

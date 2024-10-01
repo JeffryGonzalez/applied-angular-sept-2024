@@ -7,7 +7,7 @@ import { GolfStore } from '@shared/golf.store';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
   template: `
-    <p>The Dashboard Stuff Goes Here</p>
+    <p>The Dashboard Stuff Goes Here For Realz!</p>
     <div>
       <p>By The Way, Your Total Golf Score is: {{ golfStore.totalScore() }}</p>
     </div>
