@@ -1,4 +1,4 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, effect, Injectable, signal } from '@angular/core';
 export type GolfHole = {
   holeNumber: number;
   score: number;
@@ -12,13 +12,19 @@ export class GolfService {
   #currentScore = signal(0);
 
   #holes = signal<GolfHole[]>([]);
+
+  constructor() {
+    effect(() => {
+      // put code here to save the stuff to local storage, like in the onInit of the Store version.
+    });
+  }
   increment() {
     this.#currentScore.update((s) => s + 1);
   }
   decrement() {
     this.#currentScore.update((s) => s - 1);
   }
-  constructor() {}
+
   totalScore = computed(() => {
     const finalScore = this.#holes() // this holes signal is still referring to the same value.
       .map((s) => s.score) // score
@@ -37,11 +43,6 @@ export class GolfService {
   }
 
   currentScore = computed(() => this.#currentScore);
-
-  public currentHole() {
-    return this.#currentHole.asReadonly();
-  }
-  public holes() {
-    return this.#holes.asReadonly;
-  }
+  currentHole = computed(() => this.#currentHole);
+  holes = computed(() => this.#holes);
 }

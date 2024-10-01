@@ -4,7 +4,7 @@ import {
   IncrementButtonDirective,
 } from '@shared/increment-button.directive';
 import { GolfService } from './golf.service';
-import { GolfStore } from './golf.store';
+import { GolfStore } from '../../../shared/golf.store';
 
 @Component({
   selector: 'app-golf-game',

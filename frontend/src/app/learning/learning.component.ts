@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { GolfComponent } from './pages/golf/golf.component';
 import { GolfService } from './pages/golf/golf.service';
-import { GolfStore } from './pages/golf/golf.store';
+import { GolfStore } from '../shared/golf.store';
 
 @Component({
   standalone: true,

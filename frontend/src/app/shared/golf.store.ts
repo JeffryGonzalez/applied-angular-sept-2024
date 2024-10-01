@@ -7,7 +7,7 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
-import { GolfHole } from './golf.service';
+import { GolfHole } from '../learning/pages/golf/golf.service';
 import { computed } from '@angular/core';
 
 type GolfGameState = {
@@ -22,6 +22,7 @@ const initialState: GolfGameState = {
   holes: [],
 };
 export const GolfStore = signalStore(
+  { providedIn: 'root' },
   withState(initialState),
   withComputed((state) => {
     return {
