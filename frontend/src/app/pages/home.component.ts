@@ -1,5 +1,11 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  inject,
+  effect,
+} from '@angular/core';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { UserStore } from '@shared/user.store';
 
 @Component({
   selector: 'app-home',
@@ -9,4 +15,19 @@ import { RouterOutlet } from '@angular/router';
   template: ` <router-outlet />`,
   styles: ``,
 })
-export class HomeComponent {}
+export class HomeComponent {
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+  userStore = inject(UserStore);
+  isLoggedIn = this.userStore.userLoggedIn;
+  constructor() {
+    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+    effect(() => {
+      if (this.isLoggedIn() && returnUrl !== '/') {
+        console.log('returning to', returnUrl);
+        this.router.navigate([returnUrl]);
+      }
+    });
+  }
+}
