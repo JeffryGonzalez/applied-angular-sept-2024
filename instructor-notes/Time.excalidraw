@@ -5,8 +5,8 @@
   "elements": [
     {
       "type": "text",
-      "version": 810,
-      "versionNonce": 226863700,
+      "version": 811,
+      "versionNonce": 488907921,
       "isDeleted": false,
       "id": "_6ycyiBUhMe8uU2ZUmMAc",
       "fillStyle": "solid",
@@ -26,7 +26,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1727715698280,
+      "updated": 1727787541461,
       "link": null,
       "locked": false,
       "fontSize": 36,
@@ -41,8 +41,8 @@
     },
     {
       "type": "text",
-      "version": 46,
-      "versionNonce": 918541548,
+      "version": 47,
+      "versionNonce": 1376446719,
       "isDeleted": false,
       "id": "TLliTwCHbFTjxOEmR56SU",
       "fillStyle": "solid",
@@ -62,7 +62,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1727715698281,
+      "updated": 1727787541462,
       "link": null,
       "locked": false,
       "fontSize": 36,
@@ -121,8 +121,8 @@
     },
     {
       "type": "text",
-      "version": 216,
-      "versionNonce": 1971666900,
+      "version": 217,
+      "versionNonce": 1462987377,
       "isDeleted": false,
       "id": "VnYN4-fX6wph2h1Kb4j5y",
       "fillStyle": "solid",
@@ -142,7 +142,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1727715698282,
+      "updated": 1727787541463,
       "link": null,
       "locked": false,
       "fontSize": 36,
@@ -250,8 +250,8 @@
     },
     {
       "type": "text",
-      "version": 497,
-      "versionNonce": 5134188,
+      "version": 498,
+      "versionNonce": 2011394335,
       "isDeleted": false,
       "id": "_6m93AJTDl5DnbOtdo7Wa",
       "fillStyle": "solid",
@@ -276,7 +276,7 @@
           "type": "arrow"
         }
       ],
-      "updated": 1727715698282,
+      "updated": 1727787541463,
       "link": null,
       "locked": false,
       "fontSize": 36,
@@ -335,8 +335,8 @@
     },
     {
       "type": "text",
-      "version": 349,
-      "versionNonce": 871769428,
+      "version": 350,
+      "versionNonce": 2132735057,
       "isDeleted": false,
       "id": "7PWNe_CLqRBZXez8VJ3En",
       "fillStyle": "solid",
@@ -361,7 +361,7 @@
           "type": "arrow"
         }
       ],
-      "updated": 1727715698283,
+      "updated": 1727787541464,
       "link": null,
       "locked": false,
       "fontSize": 36,

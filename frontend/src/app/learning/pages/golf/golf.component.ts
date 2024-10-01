@@ -1,10 +1,13 @@
-import { computeMsgId } from '@angular/compiler';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
   signal,
 } from '@angular/core';
+import {
+  DecrementButtonDirective,
+  IncrementButtonDirective,
+} from '@shared/increment-button.directive';
 type GolfHole = {
   holeNumber: number;
   score: number;
@@ -12,14 +15,14 @@ type GolfHole = {
 @Component({
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
+  imports: [IncrementButtonDirective, DecrementButtonDirective],
   template: `
     <div>
       <div>
-        <button class="btn btn-primary" (click)="decrement()">-</button>
+        <button appDecrementButton (click)="decrement()">-</button>
         <span>{{ currentScore() }}</span>
-        <button class="btn btn-primary" (click)="increment()">+</button>
-        <button class="btn btn-primary" (click)="sunk()">Sunk</button>
+        <button appIncrementButton (click)="increment()">+</button>
+        <button class="btn" (click)="sunk()">Sunk</button>
       </div>
 
       <ul>
@@ -62,10 +65,7 @@ export class GolfComponent {
       holeNumber: this.currentHole(),
       score: this.currentScore(),
     };
-    // this.holes.update((h) => {
-    //   h.push(record);
-    //   return [...h];
-    // });
+
     this.holes.set([record, ...this.holes()]); // reassigning this to a new list
     this.currentHole.update((h) => (h += 1));
     this.currentScore.set(0);
