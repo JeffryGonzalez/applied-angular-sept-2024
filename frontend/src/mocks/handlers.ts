@@ -1,2 +1,3 @@
 import userHandler from './user.handler';
-export const handlers = [...userHandler];
+import houseHandler from './house.handler';
+export const handlers = [...userHandler, ...houseHandler];
