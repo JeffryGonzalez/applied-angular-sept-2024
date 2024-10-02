@@ -24,6 +24,7 @@ import {
   HouseRatingListItem,
 } from '../pages/house-rating/types';
 import { RatingsService } from '../services/ratings.service';
+import { getTotalScore } from '../pages/house-rating/utils';
 
 export const HouseListStore = signalStore(
   withDevtools('house-list'),
@@ -88,9 +89,3 @@ export const HouseListStore = signalStore(
     },
   })
 );
-
-export function getTotalScore(item: HouseRatingEntry) {
-  const ratings = item.qualityRating + 1 + item.quantityRating + 1;
-  const bonus = (item.hasAmbiance ? 1 : 0) + (item.hasFullSizeCandy ? 1 : 0);
-  return ratings + bonus;
-}

@@ -8,6 +8,7 @@ import {
 } from '@ngrx/signals';
 import { HouseListStore } from '../../stores/house-list.store';
 import { HouseRatingEntry } from './types';
+import { getTotalScore } from './utils';
 const initialState: HouseRatingEntry = {
   address: '',
   qualityRating: 0,
@@ -33,14 +34,8 @@ export const HouseRatingStore = signalStore(
         updateState(store, `toggled ${key}`, { [key]: !store[key]() });
       },
       add() {
-        const houseToSend: HouseRatingEntry = {
-          address: store.address(),
-          hasAmbiance: store.hasAmbiance(),
-          hasFullSizeCandy: store.hasFullSizeCandy(),
-          qualityRating: store.qualityRating(),
-          quantityRating: store.quantityRating(),
-        };
-        houseListStore.add(houseToSend);
+        const h2 = getObjFromSignal(store as unknown as HouseRatingStore);
+        houseListStore.add(h2);
         updateState(store, 'added house', initialState);
       },
     };
@@ -50,12 +45,21 @@ export const HouseRatingStore = signalStore(
     return {
       addPending: computed(() => listStore.isPending()),
       totalScore: computed(() => {
-        const ratings =
-          store.qualityRating() + 1 + (store.quantityRating() + 1);
-        const bonus =
-          (store.hasAmbiance() ? 1 : 0) + (store.hasFullSizeCandy() ? 1 : 0);
-        return ratings + bonus;
+        const obj = getObjFromSignal(store as unknown as HouseRatingStore);
+        getTotalScore(obj);
       }),
     };
   })
 );
+
+type HouseRatingStore = InstanceType<typeof HouseRatingStore>;
+function getObjFromSignal(store: HouseRatingStore) {
+  const houseToSend: HouseRatingEntry = {
+    address: store.address(),
+    hasAmbiance: store.hasAmbiance(),
+    hasFullSizeCandy: store.hasFullSizeCandy(),
+    qualityRating: store.qualityRating(),
+    quantityRating: store.quantityRating(),
+  };
+  return houseToSend;
+}
