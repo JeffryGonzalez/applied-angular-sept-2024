@@ -1,6 +1,13 @@
-import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import {
+  patchState,
+  signalStore,
+  withComputed,
+  withMethods,
+  withState,
+} from '@ngrx/signals';
 import { HouseRatingEntry, RatingRange } from './types';
 import { withDevtools, updateState } from '@angular-architects/ngrx-toolkit';
+import { computed } from '@angular/core';
 const initialState: HouseRatingEntry = {
   address: '',
   qualityRating: 0,
@@ -24,6 +31,20 @@ export const HouseRatingStore = signalStore(
       ) {
         updateState(store, `toggled ${key}`, { [key]: !store[key]() });
       },
+      add() {
+        updateState(store, 'added house', initialState);
+      },
+    };
+  }),
+  withComputed((store) => {
+    return {
+      totalScore: computed(() => {
+        const ratings =
+          store.qualityRating() + 1 + (store.quantityRating() + 1);
+        const bonus =
+          (store.hasAmbiance() ? 1 : 0) + (store.hasFullSizeCandy() ? 1 : 0);
+        return ratings + bonus;
+      }),
     };
   })
 );

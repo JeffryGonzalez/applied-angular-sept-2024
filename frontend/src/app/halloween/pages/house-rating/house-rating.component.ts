@@ -12,7 +12,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   providers: [HouseRatingStore],
   template: `
     <p>House Rating Here</p>
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="add()">
       <div class="form-control">
         <label for="Address" class="label">
           <span>Address</span>
@@ -35,6 +35,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
             class="mask mask-star-2 bg-orange-400"
           />
           }
+          <span class="indicator-item badge badge-secondary">
+            {{ store.qualityRating() + 1 }}
+          </span>
         </div>
       </div>
       <p>Quantity Rating</p>
@@ -48,6 +51,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
           class="mask mask-star-2 bg-orange-400"
         />
         }
+        <span class="indicator-item badge badge-secondary">
+          {{ store.quantityRating() + 1 }}
+        </span>
       </div>
       <div class="form-control">
         <label class="cursor-pointer label">
@@ -72,10 +78,16 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
           />
         </label>
       </div>
+      <div class="stats shadow">
+        <div class="stat">
+          <div class="stat-title">Total Score</div>
+          <div class="stat-value text-primary">{{ store.totalScore() }}</div>
+        </div>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">Add This House</button>
+      </div>
     </form>
-    <pre>
-    current quality: {{ store.qualityRating() }}
-</pre>
   `,
   styles: ``,
 })
@@ -96,4 +108,11 @@ export class HouseRatingComponent {
   form = new FormGroup({
     address: new FormControl('', { nonNullable: true }),
   });
+
+  add() {
+    if (this.form.valid) {
+      this.store.add();
+      this.form.reset();
+    }
+  }
 }
