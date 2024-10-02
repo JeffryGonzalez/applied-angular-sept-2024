@@ -13,7 +13,6 @@ export function userLoggedInGuard(): CanActivateFn {
   return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
     const router = inject(Router);
     const userStore = inject(UserStore);
-    const obs = toObservable(userStore.userLoggedIn);
 
     if (userStore.userLoggedIn()) {
       return true;

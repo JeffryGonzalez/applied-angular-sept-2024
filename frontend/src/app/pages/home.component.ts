@@ -25,7 +25,6 @@ export class HomeComponent {
 
     effect(() => {
       if (this.isLoggedIn() && returnUrl !== '/') {
-        console.log('returning to', returnUrl);
         this.router.navigate([returnUrl]);
       }
     });
