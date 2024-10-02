@@ -52,7 +52,7 @@ export const HouseListStore = signalStore(
             service.getHouseList().pipe(
               tapResponse({
                 next: (d) => patchState(store, setEntities(d), setFulfilled()),
-                error: () => setError('Error Getting List'),
+                error: (e) => setError('Error Getting List'),
               })
             )
           )

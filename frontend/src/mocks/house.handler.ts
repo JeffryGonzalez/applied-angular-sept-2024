@@ -55,8 +55,27 @@ const fakeHouses: HouseListEntity[] = [
   },
 ];
 
+const weirdData = [
+  {
+    id: '1',
+    address: {
+      street: '506 Reed',
+      city: 'Akron',
+      state: 'Oh',
+    },
+    ratings: {
+      ambiance: 3,
+      candy: 4,
+    },
+    qualityRating: 3,
+    quantityRating: 4,
+  },
+];
+
 const handlers = [
   http.get('/api/houses', async () => {
+    //return HttpResponse.json([{ name: 'Brad' }, { name: 'Sarah' }]);
+    return HttpResponse.json(weirdData);
     return HttpResponse.json(fakeHouses);
   }),
   http.post('/api/houses', async ({ request }) => {
