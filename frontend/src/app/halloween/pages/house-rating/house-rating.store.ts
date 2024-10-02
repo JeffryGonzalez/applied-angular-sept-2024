@@ -7,7 +7,8 @@ import {
 } from '@ngrx/signals';
 import { HouseRatingEntry, RatingRange } from './types';
 import { withDevtools, updateState } from '@angular-architects/ngrx-toolkit';
-import { computed } from '@angular/core';
+import { computed, inject } from '@angular/core';
+import { HouseListStore } from '../../stores/house-list.store';
 const initialState: HouseRatingEntry = {
   address: '',
   qualityRating: 0,
@@ -19,6 +20,7 @@ export const HouseRatingStore = signalStore(
   withDevtools('house-rating-entry'),
   withState(initialState),
   withMethods((store) => {
+    const houseListStore = inject(HouseListStore);
     return {
       set(
         key: keyof Omit<HouseRatingEntry, 'hasAmbiance' | 'hasFullSizeCandy'>,
@@ -32,6 +34,14 @@ export const HouseRatingStore = signalStore(
         updateState(store, `toggled ${key}`, { [key]: !store[key]() });
       },
       add() {
+        const houseToSend: HouseRatingEntry = {
+          address: store.address(),
+          hasAmbiance: store.hasAmbiance(),
+          hasFullSizeCandy: store.hasFullSizeCandy(),
+          qualityRating: store.qualityRating(),
+          quantityRating: store.quantityRating(),
+        };
+        houseListStore.add(houseToSend);
         updateState(store, 'added house', initialState);
       },
     };
