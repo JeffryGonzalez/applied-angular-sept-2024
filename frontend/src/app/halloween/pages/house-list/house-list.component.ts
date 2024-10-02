@@ -12,7 +12,7 @@ import { HouseListItem } from './components/house-list-item';
     <div>
       @if(store.isPending() === false) {
 
-      <ul class="grid grid-flow-col gap-4">
+      <ul class="flex flex-row flex-wrap gap-4">
         @for(item of store.getHouseListModel(); track item.id) {
         <app-house-list-item [item]="item" />
         }

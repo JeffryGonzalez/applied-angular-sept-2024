@@ -29,6 +29,30 @@ const fakeHouses: HouseListEntity[] = [
     qualityRating: 3,
     quantityRating: 4,
   },
+  {
+    id: '4',
+    address: '506 Reed',
+    hasAmbiance: true,
+    hasFullSizeCandy: true,
+    qualityRating: 3,
+    quantityRating: 4,
+  },
+  {
+    id: '5',
+    address: '506 Reed',
+    hasAmbiance: true,
+    hasFullSizeCandy: true,
+    qualityRating: 3,
+    quantityRating: 4,
+  },
+  {
+    id: '6',
+    address: '506 Reed',
+    hasAmbiance: true,
+    hasFullSizeCandy: true,
+    qualityRating: 3,
+    quantityRating: 4,
+  },
 ];
 
 const handlers = [

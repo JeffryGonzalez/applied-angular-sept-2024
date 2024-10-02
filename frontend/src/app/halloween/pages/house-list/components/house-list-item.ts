@@ -7,7 +7,7 @@ import { HouseRatingListItem } from '../../house-rating/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
   template: `
-    <li class="card bg-base-100 w-96 shadow-xl">
+    <li class="card bg-base-100 w-96  shadow-xl">
       <div class="card-body">
         <p class="card-title">{{ item().address }}</p>
         <p>Total Score: {{ item().totalScore }}</p>
