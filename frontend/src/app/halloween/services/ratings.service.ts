@@ -1,18 +1,18 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, Injector } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { parseResponse } from '@shared/type-utils';
+import z from 'zod';
 import {
   HouseListEntity,
   HouseRatingEntry,
   RatingRange,
 } from '../pages/house-rating/types';
-import { concatMap, map, Observable, tap } from 'rxjs';
-import z from 'zod';
 
 const HouseSchema = z.object({
   id: z.string(),
   address: z.string(),
   hasAmbiance: z.boolean(),
-  hasFullsizeCandy: z.boolean(),
+  hasFullSizeCandy: z.boolean(),
   qualityRating: z.union([
     z.literal(0),
     z.literal(1),
@@ -56,8 +56,8 @@ export class RatingsService {
 
   getHouseList() {
     return this.#http
-      .get<WeirdResponse[]>('/api/houses')
-      .pipe(map((r) => r.map(mapToEntity)));
+      .get<HouseListEntity[]>('/api/houses')
+      .pipe(parseResponse(HouseResponseSchema));
   }
 }
 

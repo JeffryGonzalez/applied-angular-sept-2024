@@ -75,7 +75,7 @@ const weirdData = [
 const handlers = [
   http.get('/api/houses', async () => {
     //return HttpResponse.json([{ name: 'Brad' }, { name: 'Sarah' }]);
-    return HttpResponse.json(weirdData);
+    //return HttpResponse.json(weirdData);
     return HttpResponse.json(fakeHouses);
   }),
   http.post('/api/houses', async ({ request }) => {
