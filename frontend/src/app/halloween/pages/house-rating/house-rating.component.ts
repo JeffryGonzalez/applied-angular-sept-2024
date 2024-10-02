@@ -12,6 +12,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   providers: [HouseRatingStore],
   template: `
     <p>House Rating Here</p>
+
+    @if(false) {
+    <p>We are saving your new house rating!</p>
+    } @else {
+
     <form [formGroup]="form" (ngSubmit)="add()">
       <div class="form-control">
         <label for="Address" class="label">
@@ -88,6 +93,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
         <button type="submit" class="btn btn-primary">Add This House</button>
       </div>
     </form>
+    }
   `,
   styles: ``,
 })

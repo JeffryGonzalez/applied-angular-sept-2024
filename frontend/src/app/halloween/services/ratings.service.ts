@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, Injector } from '@angular/core';
-import { HouseRatingEntry } from '../pages/house-rating/types';
-import { HouseListEntity } from '../stores/house-list.store';
+import { HouseListEntity, HouseRatingEntry } from '../pages/house-rating/types';
 
 // watch this space.
 @Injectable()
@@ -10,5 +9,9 @@ export class RatingsService {
 
   addHouseToList(house: HouseRatingEntry) {
     return this.#http.post<HouseListEntity>('/api/houses', house);
+  }
+
+  getHouseList() {
+    return this.#http.get<HouseListEntity[]>('/api/houses');
   }
 }

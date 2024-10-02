@@ -1,14 +1,13 @@
+import { updateState, withDevtools } from '@angular-architects/ngrx-toolkit';
+import { computed, inject } from '@angular/core';
 import {
-  patchState,
   signalStore,
   withComputed,
   withMethods,
   withState,
 } from '@ngrx/signals';
-import { HouseRatingEntry, RatingRange } from './types';
-import { withDevtools, updateState } from '@angular-architects/ngrx-toolkit';
-import { computed, inject } from '@angular/core';
 import { HouseListStore } from '../../stores/house-list.store';
+import { HouseRatingEntry } from './types';
 const initialState: HouseRatingEntry = {
   address: '',
   qualityRating: 0,
@@ -47,7 +46,9 @@ export const HouseRatingStore = signalStore(
     };
   }),
   withComputed((store) => {
+    const listStore = inject(HouseListStore);
     return {
+      addPending: computed(() => listStore.isPending()),
       totalScore: computed(() => {
         const ratings =
           store.qualityRating() + 1 + (store.quantityRating() + 1);

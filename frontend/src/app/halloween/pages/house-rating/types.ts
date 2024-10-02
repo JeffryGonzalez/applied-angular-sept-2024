@@ -7,3 +7,6 @@ export type HouseRatingEntry = {
   hasAmbiance: boolean;
   hasFullSizeCandy: boolean;
 };
+export type HouseListEntity = HouseRatingEntry & { id: string };
+
+export type HouseRatingListItem = HouseListEntity & { totalScore: number };
