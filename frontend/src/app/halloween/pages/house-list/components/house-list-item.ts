@@ -13,8 +13,12 @@ import { HouseRatingListItem } from '../../house-rating/types';
         <p>Total Score: {{ item().totalScore }}</p>
         @if(item().hasFullSizeCandy) {
         <div class="badge badge-success gap-2">Has Full Sized Candybars!</div>
+        } @else {
+        <div class="badge badge-error gap-2">No Full Sized Candybars!</div>
         } @if(item().hasAmbiance) {
         <div class="badge badge-success gap-2">Has Great Ambiance!</div>
+        } @else {
+        <div class="badge badge-error gap-2">No Great Ambiance!</div>
         }
       </div>
     </li>
