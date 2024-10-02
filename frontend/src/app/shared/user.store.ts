@@ -10,7 +10,6 @@ import {
   withState,
 } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { HttpResponse } from 'msw';
 import { pipe, switchMap, tap } from 'rxjs';
 
 type ApiResourceStates = 'idle' | 'pending' | 'fulfilled' | 'error';
