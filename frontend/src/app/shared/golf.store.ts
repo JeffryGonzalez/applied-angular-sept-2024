@@ -10,11 +10,11 @@ import {
 import { GolfHole } from '../learning/pages/golf/golf.service';
 import { computed } from '@angular/core';
 
-type GolfGameState = {
+interface GolfGameState {
   currentHole: number;
   currentScore: number;
   holes: GolfHole[];
-};
+}
 
 const initialState: GolfGameState = {
   currentHole: 1,

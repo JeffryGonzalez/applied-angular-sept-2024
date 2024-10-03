@@ -1,8 +1,8 @@
 import { computed, effect, Injectable, signal } from '@angular/core';
-export type GolfHole = {
+export interface GolfHole {
   holeNumber: number;
   score: number;
-};
+}
 
 @Injectable({
   providedIn: 'root',

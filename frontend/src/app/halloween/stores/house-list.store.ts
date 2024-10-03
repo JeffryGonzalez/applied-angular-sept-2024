@@ -17,7 +17,7 @@ import {
   setPending,
   withRequestStatus,
 } from '@shared/request-status.feature';
-import { mergeMap, pipe, tap } from 'rxjs';
+import { map, mergeMap, pipe, tap } from 'rxjs';
 import {
   HouseListEntity,
   HouseRatingEntry,
@@ -25,25 +25,29 @@ import {
 } from '../pages/house-rating/types';
 import { RatingsService } from '../services/ratings.service';
 import { getTotalScore } from '../pages/house-rating/utils';
+import { HousePendingStore } from './house-pending.store';
 
 export const HouseListStore = signalStore(
   withDevtools('house-list'),
   withRequestStatus(),
   withEntities<HouseListEntity>(),
   withComputed((store) => {
+    const pendingStore = inject(HousePendingStore);
     return {
       getHouseListModel: computed(() => {
-        return store
-          .entities()
-          .map(
-            (e) =>
-              ({ ...e, totalScore: getTotalScore(e) } as HouseRatingListItem)
-          );
+        const combined = [
+          ...store.entities(),
+          ...pendingStore.getHouseListModel(),
+        ];
+        return combined.map(
+          (e) => ({ ...e, totalScore: getTotalScore(e) } as HouseRatingListItem)
+        );
       }),
     };
   }),
   withMethods((store) => {
     const service = inject(RatingsService);
+    const pendingStore = inject(HousePendingStore);
     return {
       _load: rxMethod<void>(
         pipe(
@@ -64,17 +68,26 @@ export const HouseListStore = signalStore(
       ),
       add: rxMethod<HouseRatingEntry>(
         pipe(
+          map((h) => {
+            const tempId = crypto.randomUUID();
+            return [h, tempId] as [HouseRatingEntry, string];
+          }),
           tap(() => patchState(store, setPending())),
-          mergeMap((h) =>
-            service.addHouseToList(h).pipe(
+          tap(([h, id]) => {
+            pendingStore.addHouse({ ...h, id });
+          }),
+          mergeMap(([h, id]) =>
+            service.addHouseToList(h, id).pipe(
               tapResponse({
-                next: (h) =>
+                next: ([h, tempId]) => {
                   updateState(
                     store,
                     'adding from api',
                     addEntity(h),
                     setFulfilled()
-                  ),
+                  );
+                  pendingStore.removeHouse(tempId);
+                },
                 error: (e: HttpErrorResponse) =>
                   patchState(
                     store,

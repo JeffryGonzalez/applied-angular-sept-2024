@@ -3,7 +3,6 @@ import {
   DecrementButtonDirective,
   IncrementButtonDirective,
 } from '@shared/increment-button.directive';
-import { GolfService } from './golf.service';
 import { GolfStore } from '../../../shared/golf.store';
 
 @Component({

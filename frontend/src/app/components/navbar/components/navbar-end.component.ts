@@ -19,5 +19,4 @@ import { UserStore } from '@shared/user.store';
 })
 export class NavbarEndComponent {
   userStore = inject(UserStore);
-  constructor() {}
 }

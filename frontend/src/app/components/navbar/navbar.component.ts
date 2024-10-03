@@ -3,15 +3,13 @@ import {
   Component,
   computed,
   inject,
-  signal,
 } from '@angular/core';
-import { NavbarCenterMenuComponents } from './components/navbar-center-menu.components';
+import { RouterLink } from '@angular/router';
+import { UserStore } from '@shared/user.store';
+import { NavbarCenterMenuComponent } from './components/navbar-center-menu.components';
 import { NavbarEndComponent } from './components/navbar-end.component';
 import { NavbarItemsComponent } from './components/navbar-side-menu.component';
 import { LinkItem } from './types';
-import { RouterLink } from '@angular/router';
-import { GolfStore } from '@shared/golf.store'; // touching somebody else's code. This should be in @shared
-import { UserStore } from '@shared/user.store';
 
 @Component({
   selector: 'app-nav-bar',
@@ -20,7 +18,7 @@ import { UserStore } from '@shared/user.store';
   imports: [
     NavbarEndComponent,
     NavbarItemsComponent,
-    NavbarCenterMenuComponents,
+    NavbarCenterMenuComponent,
     RouterLink,
   ],
   template: `

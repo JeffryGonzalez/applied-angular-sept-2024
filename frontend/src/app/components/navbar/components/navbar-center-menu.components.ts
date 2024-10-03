@@ -23,6 +23,6 @@ import { LinkItem } from '../types';
   `,
   styles: ``,
 })
-export class NavbarCenterMenuComponents {
+export class NavbarCenterMenuComponent {
   links = input.required<LinkItem[]>();
 }

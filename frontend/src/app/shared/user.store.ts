@@ -1,5 +1,5 @@
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { computed, inject } from '@angular/core';
 import { tapResponse } from '@ngrx/operators';
 import {
@@ -14,10 +14,10 @@ import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { map, pipe, switchMap, tap } from 'rxjs';
 
 type ApiResourceStates = 'idle' | 'pending' | 'fulfilled' | 'error';
-type UserState = {
+interface UserState {
   userName: string;
   status: ApiResourceStates;
-};
+}
 const initialState: UserState = {
   userName: '',
   status: 'idle',
@@ -42,7 +42,7 @@ export const UserStore = signalStore(
                     status: 'fulfilled',
                   });
                 },
-                error: (error: HttpErrorResponse) => {
+                error: () => {
                   // log it, send a message to another api that we've got a hoxx0r here
                   patchState(store, { userName: '', status: 'error' });
                 },

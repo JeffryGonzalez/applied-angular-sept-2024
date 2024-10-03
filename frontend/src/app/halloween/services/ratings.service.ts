@@ -7,6 +7,7 @@ import {
   HouseRatingEntry,
   RatingRange,
 } from '../pages/house-rating/types';
+import { map } from 'rxjs';
 
 const HouseSchema = z.object({
   id: z.string(),
@@ -31,7 +32,7 @@ const HouseSchema = z.object({
 
 const HouseResponseSchema = z.array(HouseSchema);
 
-type WeirdResponse = {
+interface WeirdResponse {
   id: string;
   address: {
     street: string;
@@ -44,14 +45,16 @@ type WeirdResponse = {
   };
   qualityRating: number;
   quantityRating: number;
-};
+}
 // watch this space.
 @Injectable()
 export class RatingsService {
   #http = inject(HttpClient);
 
-  addHouseToList(house: HouseRatingEntry) {
-    return this.#http.post<HouseListEntity>('/api/houses', house);
+  addHouseToList(house: HouseRatingEntry, tempId: string) {
+    return this.#http
+      .post<HouseListEntity>('/api/houses', house)
+      .pipe(map((r) => [r, tempId] as [HouseListEntity, string]));
   }
 
   getHouseList() {
@@ -60,7 +63,7 @@ export class RatingsService {
       .pipe(parseResponse(HouseResponseSchema));
   }
 }
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function mapToEntity(r: WeirdResponse): HouseListEntity {
   return {
     id: r.id,

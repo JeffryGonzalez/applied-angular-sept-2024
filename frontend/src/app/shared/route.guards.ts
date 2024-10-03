@@ -1,5 +1,4 @@
 import { inject } from '@angular/core';
-import { toObservable } from '@angular/core/rxjs-interop';
 import {
   ActivatedRouteSnapshot,
   CanActivateFn,

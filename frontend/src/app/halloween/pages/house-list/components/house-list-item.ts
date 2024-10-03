@@ -9,7 +9,11 @@ import { HouseRatingListItem } from '../../house-rating/types';
   template: `
     <li class="card bg-base-100 w-96  shadow-xl">
       <div class="card-body">
-        <p class="card-title">{{ item().address }}</p>
+        <p class="card-title">
+          @if(item().isPending) {
+          <span class="loading loading-bars loading-md"></span> }
+          {{ item().address }}
+        </p>
         <p>Total Score: {{ item().totalScore }}</p>
         @if(item().hasFullSizeCandy) {
         <div class="badge badge-success gap-2">Has Full Sized Candybars!</div>
@@ -25,6 +29,6 @@ import { HouseRatingListItem } from '../../house-rating/types';
   `,
   styles: ``,
 })
-export class HouseListItem {
+export class HouseListItemComponent {
   item = input.required<HouseRatingListItem>();
 }
