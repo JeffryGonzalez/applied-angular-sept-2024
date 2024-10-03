@@ -1,11 +1,12 @@
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { HouseRatingListItem } from '../../house-rating/types';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-house-list-item',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
+  imports: [RouterLink],
   template: `
     <li class="card bg-base-100 w-96  shadow-xl">
       <div class="card-body">
@@ -24,6 +25,15 @@ import { HouseRatingListItem } from '../../house-rating/types';
         } @else {
         <div class="badge badge-error gap-2">No Great Ambiance!</div>
         }
+        <div class="card-actions">
+          {{ item().isPending }}
+          @if(item().isPending) {
+          <span class="loading loading-dots loading-md"></span>
+          } @else {
+          <a [routerLink]="['edit', item().id]" class="btn btn-link">Edit</a>
+
+          }
+        </div>
       </div>
     </li>
   `,

@@ -26,6 +26,7 @@ import {
 import { RatingsService } from '../services/ratings.service';
 import { getTotalScore } from '../pages/house-rating/utils';
 import { HousePendingStore } from './house-pending.store';
+import { HouseSortAndFilterStore } from './sort-and-filter.store';
 
 export const HouseListStore = signalStore(
   withDevtools('house-list'),
@@ -33,15 +34,37 @@ export const HouseListStore = signalStore(
   withEntities<HouseListEntity>(),
   withComputed((store) => {
     const pendingStore = inject(HousePendingStore);
+    const sortStore = inject(HouseSortAndFilterStore);
     return {
       getHouseListModel: computed(() => {
         const combined = [
           ...store.entities(),
           ...pendingStore.getHouseListModel(),
         ];
-        return combined.map(
-          (e) => ({ ...e, totalScore: getTotalScore(e) } as HouseRatingListItem)
-        );
+        let filtered = [
+          ...combined
+            .map(
+              (e) =>
+                ({ ...e, totalScore: getTotalScore(e) } as HouseRatingListItem)
+            )
+            .filter((e) => e.totalScore <= sortStore.scoreFilter()),
+        ];
+
+        if (sortStore.hasFullSize()) {
+          filtered = filtered.filter((e) => e.hasFullSizeCandy);
+        }
+        if (sortStore.hasAmbiance()) {
+          filtered = filtered.filter((e) => e.hasAmbiance);
+        }
+        const sortKey =
+          sortStore.sortBy() === 'address' ? 'address' : 'totalScore';
+        if (sortKey === 'address') {
+          return [
+            ...filtered.sort((a, b) => a.address.localeCompare(b.address)),
+          ];
+        } else {
+          return [...filtered.sort((a, b) => b.totalScore - a.totalScore)];
+        }
       }),
     };
   }),

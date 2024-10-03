@@ -13,3 +13,10 @@ export type HouseRatingListItem = HouseListEntity & {
   totalScore: number;
   isPending: boolean;
 };
+
+export type ScoreAndFilterState = {
+  scoreFilter: number;
+  hasFullSize: boolean;
+  hasAmbiance: boolean;
+  sortBy: 'score' | 'address';
+};

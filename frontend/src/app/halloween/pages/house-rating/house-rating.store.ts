@@ -46,7 +46,7 @@ export const HouseRatingStore = signalStore(
       addPending: computed(() => listStore.isPending()),
       totalScore: computed(() => {
         const obj = getObjFromSignal(store as unknown as HouseRatingStore);
-        getTotalScore(obj);
+        return getTotalScore(obj);
       }),
     };
   })
