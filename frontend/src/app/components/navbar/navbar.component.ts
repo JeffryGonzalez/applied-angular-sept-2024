@@ -69,6 +69,10 @@ export class NavbarComponent {
       path: '/halloween',
       text: 'Halloween Tracker',
     },
+    {
+      path: '/labs',
+      text: 'Labs',
+    },
   ];
   userStore = inject(UserStore);
   links = computed(() => {

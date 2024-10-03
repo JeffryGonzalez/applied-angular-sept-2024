@@ -28,6 +28,12 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'labs',
+        canActivate: [userLoggedInGuard()],
+        loadChildren: () =>
+          import('./labs/labs.routes').then((r) => r.LABS_ROUTES),
+      },
+      {
         // a catchall has to be last.
         path: '**',
         component: DashboardComponent,
